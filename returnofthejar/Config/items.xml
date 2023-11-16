@@ -1,0 +1,57 @@
+<configs>
+
+<append xpath="/items">
+
+<!-- Can! -->
+<item name="drinkCanEmpty">
+	<property name="HoldType" value="14"/>
+	<property name="CustomIcon" value="bucketEmpty"/>
+		<property name="CustomIconTint" value="36454F"/>
+	<property name="Meshfile" value="@:Other/Items/Food/can_emptyPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Stacknumber" value="500"/>
+	<property name="EconomicValue" value="5"/>
+	<property name="CraftingIngredientTime" value="9"/>
+	<property name="Group" value="Resources"/>
+</item>
+
+<!-- Jar! -->
+<item name="drinkJarEmpty">
+	<property name="HoldType" value="3"/>
+	<property name="CustomIcon" value="clothPillar50"/>
+		<property name="CustomIconTint" value="36454F"/>
+	<property name="Meshfile" value="@:Other/Items/Food/emptyJarPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="Material" value="Mglass"/>
+	<property name="Stacknumber" value="125"/>
+	<property name="Weight" value="10"/>
+	<property name="EconomicValue" value="6"/>
+	<property name="CraftingIngredientTime" value="9"/>
+	<property class="Action1">
+		<property name="Class" value="CollectWater"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Change_item_to" value="drinkJarRiverWater"/>
+		<property name="Do_block_action" value="deplete1"/>
+		<property name="Focused_blockname_1" value="water"/>
+		<property name="Focused_blockname_2" value="waterMoving"/>
+		<property name="Focused_blockname_3" value="waterStaticBucket"/>
+		<property name="Focused_blockname_4" value="waterMovingBucket"/>
+		<property name="Focused_blockname_5" value="terrWaterPOI"/>
+		<property name="Sound_start" value="bucketfill_water"/>
+	</property>
+	<property name="Group" value="Resources"/>
+</item>
+</append>
+
+
+<!-- adds jar and can to EVERYTHING!!! -->
+<append xpath="//item[starts-with(@name, 'food')]/property[@class='Action0']">
+		<property name="Create_item" value="drinkCanEmpty"/>
+</append>
+
+<append xpath="//item[starts-with(@name, 'drink')]/property[@class='Action0']">
+		<property name="Create_item" value="drinkJarEmpty"/>
+</append>
+
+</configs>
